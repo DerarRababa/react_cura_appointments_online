@@ -16,18 +16,21 @@ const config = {
     prevEl: ".button-prev",
   },
 
-  on: {
-    slideChange: function () {
-      console.log(this.activeIndex);
-    },
-  },
+ 
 };
+
 class AppointmentsDates extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { slecetedDate: "" };
+  }
+
   swiperRef = null;
-  goNext = () => {
-    //use `this.swiperRef.swiper` to get the instance of Swiper
-    this.swiperRef.swiper.slideNext();
+  slecetDate = (opject, i) => {
+    this.setState({ slecetedDate: opject });
+    this.props.handleChange(opject, i);
   };
+
   render() {
     return (
       <article className=" relative">
@@ -37,18 +40,27 @@ class AppointmentsDates extends Component {
           className="relative px-6"
         >
           <section className="swiper-wrapper">
-            {(() => {
-              const arr = [];
-              for (let i = 0; i < 10; i++) {
-                arr.push(
-                  <button className="swiper-slide px-2 w-12 py-2 cursor-pointer mt-1 rounded-lg flex flex-col items-center  m-1 bg-white text-black shadow-md">
-                    <span  className="font-semibold text-sm">WED</span>
-                    <span  className="text-base font-light leading-5 mt-1">24</span>
-                  </button>
-                );
-              }
-              return arr;
-            })()}
+            {this.props.dates.schedule.map((opject, i) => {
+              return (
+                <button
+                  onClick={() => this.slecetDate(opject, i)}
+                  key={i + "#" + opject.availability.date}
+                  className={`swiper-slide ${
+                    this.state.slecetedDate == opject
+                      ? " bg-blue-500 text-white"
+                      : "bg-white shadow-md"
+                  } px-2 py-2 whitespace-nowrap cursor-pointer rounded-lg flex flex-col text-sm items-center w-[100px] m-1 bg-white text-black shadow-md
+                     transition  delay-100 hover:text-white hover:bg-blue-500 duration-300`}
+                >
+                  <span className="font-semibold text-sm">
+                    {opject.availability.day.substring(0, 3).toUpperCase()}
+                  </span>
+                  <span className="text-base font-light leading-5 mt-1">
+                    {opject.availability.date.split("-")[0]}
+                  </span>
+                </button>
+              );
+            })}
           </section>
         </AwesomeSwiper>
         <button className="button-prev absolute -left-4 top-7 z-10">
