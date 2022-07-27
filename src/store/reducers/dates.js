@@ -2,7 +2,7 @@
 
 const dates = (state ='', action) => {
     switch (action.type) {
-      case 'ADD_TODO':
+      case 'ADD_DATA':
       return action.data
       default:
         return state

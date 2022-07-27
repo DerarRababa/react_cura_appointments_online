@@ -2,8 +2,7 @@ import React, { useState ,useEffect} from "react";
 import AppointmentsDates from "./-AppointmentsDates";
 
 import AppointmentsTimes from "./-AppointmentsTimes";
-import { addTodo } from '../../store/actions'
-import axios from 'axios'
+import { fetchData } from '../../store/actions'
 
 const Appointments = ({ dates,dispatch }) => {
   const [selectedAvailabilityDate, setSelectedAvailabilityDate] = useState("");
@@ -43,12 +42,7 @@ const Appointments = ({ dates,dispatch }) => {
 
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_END_POINT}`).then((res)=>{
-      dispatch({
-        type: 'ADD_TODO',
-        data: JSON.parse(res.data)
-      })
-         }) 
+    fetchData(dispatch)
 }, []);
 
 
@@ -70,9 +64,15 @@ const Appointments = ({ dates,dispatch }) => {
                 dates={dates}
               />
               ) : (
-              <p className=" text-sm text-gray flex items-center">
-                  will appear the available times when you slected day
-                </p>)}
+              
+                <div className="animate-pulse h-full flex space-x-4">
+                      <div className=" h-full  w-[70px] m-1 bg-slate-200 rounded col-span-2"></div>
+                      <div className=" h-full  w-[70px] m-1 bg-slate-200 rounded col-span-2"></div>
+                      <div className=" h-full  w-[70px] m-1 bg-slate-200 rounded col-span-2"></div>
+                      <div className=" h-full  w-[70px] m-1 bg-slate-200 rounded col-span-2"></div>
+              </div>
+
+              )}
              
             </article>
           </section>
