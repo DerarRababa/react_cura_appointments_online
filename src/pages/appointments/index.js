@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import AppointmentsDates from "./-AppointmentsDates";
 
 import AppointmentsTimes from "./-AppointmentsTimes";
+import { addTodo } from '../../store/actions'
 
-const Appointments = ({ dates }) => {
+const Appointments = ({ dates,dispatch }) => {
   const [selectedAvailabilityDate, setSelectedAvailabilityDate] = useState("");
   const [availableTimes, setAvailableTimes] = useState("");
   const [unavailableTimes, setUnAvailableTimes] = useState("");
@@ -37,6 +38,13 @@ const Appointments = ({ dates }) => {
     console.log(time);
     setSelectedAvailabilityTime(time);
   };
+
+
+  useEffect(() => {
+    dispatch(addTodo('ssssss'))
+    console.log('mount it!');
+}, []);
+
   return (
     <div className="bg-white p-4 flex items-center justify-center min-h-screen">
       <main className="w-96 max-w-full">
