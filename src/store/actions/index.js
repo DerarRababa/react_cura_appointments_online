@@ -1,16 +1,7 @@
-let nextTodoId = 0
+
+
 export const addTodo = text => ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
-})
+    type: 'ADD_TODO'
+  })
+  
 
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter 
-})
-
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL'
-}

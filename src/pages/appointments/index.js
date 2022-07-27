@@ -3,6 +3,7 @@ import AppointmentsDates from "./-AppointmentsDates";
 
 import AppointmentsTimes from "./-AppointmentsTimes";
 import { addTodo } from '../../store/actions'
+import axios from 'axios'
 
 const Appointments = ({ dates,dispatch }) => {
   const [selectedAvailabilityDate, setSelectedAvailabilityDate] = useState("");
@@ -40,10 +41,16 @@ const Appointments = ({ dates,dispatch }) => {
   };
 
 
+
   useEffect(() => {
-    dispatch(addTodo('ssssss'))
-    console.log('mount it!');
+    axios.get(`${process.env.REACT_APP_API_END_POINT}`).then((res)=>{
+      dispatch({
+        type: 'ADD_TODO',
+        data: JSON.parse(res.data)
+      })
+         }) 
 }, []);
+
 
   return (
     <div className="bg-white p-4 flex items-center justify-center min-h-screen">
@@ -57,10 +64,16 @@ const Appointments = ({ dates,dispatch }) => {
           <section className="mt-2">
             <h4 className="font-semibold text-base">Schedule</h4>
             <article className=" h-16">
+              {dates ? ( 
               <AppointmentsDates
                 handleChange={parentHandleChange}
                 dates={dates}
               />
+              ) : (
+              <p className=" text-sm text-gray flex items-center">
+                  will appear the available times when you slected day
+                </p>)}
+             
             </article>
           </section>
           <section className="mt-2">
@@ -74,7 +87,6 @@ const Appointments = ({ dates,dispatch }) => {
                 />
               ) : (
                 <p className=" text-sm text-gray flex items-center">
-                  {" "}
                   will appear the available times when you slected day
                 </p>
               )}
