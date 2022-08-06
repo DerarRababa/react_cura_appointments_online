@@ -2,20 +2,29 @@ import logo from "../images/logo.svg";
 import light from "../images/light.svg";
 import dark from "../images/dark.svg";
 import React, { useState } from "react";
+import {useTranslation} from "react-i18next";
 
 function Header() {
+ 
+    const [t, i18n] = useTranslation('common');
+
+
+
 
     const [mode, setMode] = useState("light");
 
     const [lang, setLang] = useState("en");
 
     const chandeMode = (userMode) => {
+        
         document.documentElement.classList.remove(mode)
         document.documentElement.classList.add(userMode)
         setMode(userMode);
       };
       const chandeLang = (userlang) => {
-       
+        document.documentElement.setAttribute("dir", userlang == 'en' ? 'ltr':'rtl');
+
+        i18n.changeLanguage(userlang)
         setLang(userlang);
       };
 

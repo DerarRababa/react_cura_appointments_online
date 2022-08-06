@@ -1,0 +1,12 @@
+{
+    "appointments": {
+        "schedule_appointment": "حجز موعد",
+        "fees":"مصاريف",
+        "schedule":"اختر التاريخ",
+        "choose_time":"أختر الوقت",
+        "will_appear_times":"ستظهر الأوقات المتاحة عند تحديد اليوم",
+        "book_appointment":"حجز موعد"
+
+        
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "appointments": {
+        "schedule_appointment": "Schedule Appointment",
+        "fees":"Fees",
+        "schedule":"Schedule",
+        "choose_time":"Choose time",
+        "will_appear_times":"will appear the available times when you slected day",
+        "book_appointment":"Book Appointment"
+    }
+}
