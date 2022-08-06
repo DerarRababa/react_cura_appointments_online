@@ -47,10 +47,10 @@ const Appointments = ({ dates,dispatch }) => {
 
 
   return (
-    <div className="bg-white p-4 flex items-center justify-center min-h-screen">
+    <div className="bg-white  dark:bg-slate-800 transition  duration-300 dark:text-white p-4 flex items-center justify-center min-h-screen">
       <main className="w-96 max-w-full">
         <h1 className="font-semibold text-xl mb-1">Schedule Appointment</h1>
-        <section className="border-2 border-gray rounded-xl w-full px-7 py-4 hover:shadow-xl transition  delay-100 duration-300">
+        <section className="border-2 border-gray rounded-xl w-full px-7 py-4 hover:shadow-sm dark:shadow-white transition  delay-100 duration-300">
           <h4 className="flex justify-between items-center border-b-2 border-gray pb-2">
             <span className="font-semibold text-base">Fees</span>
             <span className="text-gray">85$</span>
@@ -98,8 +98,8 @@ const Appointments = ({ dates,dispatch }) => {
           className={` ${
             selectedAvailabilityDate && selectedAvailabilityTime
               ? " bg-blue-500"
-              : " bg-gray-300"
-          } text-white mt-4 w-full  rounded-lg py-3 flex items-center justify-center`}
+              : " bg-gray-300 text-slate-500"
+          } text-white  mt-4 w-full  rounded-lg py-3 flex items-center justify-center dark:shadow-white hover:shadow-sm`}
         >
           <span className="px-3"> Book Appointment </span>
         </button>

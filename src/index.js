@@ -8,11 +8,12 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import rootReducer from './store/reducers';
 import { createStore } from 'redux';
-
+import Header  from './components/header';
 const store = createStore(rootReducer)
 
 render(
   <Provider store={store}>
+    <Header />
     <VisibleAppointments />
   </Provider>,
   document.getElementById('root')

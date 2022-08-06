@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import AwesomeSwiper from "react-awesome-swiper";
 import "./appointment.css";
-import buttoPrev from "./images/left-arrow.svg";
-import buttonNext from "./images/right-arrow.svg";
+import buttoPrev from "../../images/left-arrow.svg";
+import buttonNext from "../../images/right-arrow.svg";
 
 //this config is same as idangrous swiper
 const config = {
@@ -50,9 +50,9 @@ class AppointmentsDates extends Component {
                   key={i + "#" + opject.availability.date}
                   className={`swiper-slide ${
                     this.state.slecetedDate == opject
-                      ? " bg-blue-500 text-white"
-                      : "bg-white shadow-md"
-                  } px-2 py-2 whitespace-nowrap cursor-pointer rounded-lg flex flex-col text-sm items-center w-[100px] m-1 bg-white text-black shadow-md
+                      ? " bg-blue-500 text-white dark:text-slate-800"
+                      : "bg-white dark:bg-slate-800 dark:text-white shadow-sm dark:shadow-white"
+                  } px-2 py-2 whitespace-nowrap cursor-pointer rounded-lg flex flex-col text-sm items-center w-[100px] m-1 bg-white text-black shadow-sm dark:shadow-white
                      transition  delay-100 hover:text-white hover:bg-blue-500 duration-300`}
                 >
                   <span className="font-semibold text-sm">
